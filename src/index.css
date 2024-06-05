@@ -66,9 +66,13 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
-* {
+
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -87,4 +91,26 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+} */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #1a202c;
+  /* color: #f3f3f3; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  width: 100%;
+  height: 100%;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

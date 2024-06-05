@@ -9,23 +9,31 @@
 // export default Register
 
 import { useFormik } from "formik";
-import { basicSchema } from "../schemas";
+import { RegisterSchema } from "../schemas";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const onSubmit = async (values, actions) => {
-  console.log(values);
-  console.log(actions);
-  try {
-    const response = await axios.post('https://fascal.onrender.com/auth/signup', values);
-    console.log('Response:', response.data);
-  } catch (error) {
-    console.error('There was an error!', error);
-  }
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  actions.resetForm();
-};
-
 const Register = () => {
+  const navigate = useNavigate()
+
+  const onSubmit = async (values, actions) => {
+    console.log(values);
+    console.log(actions);
+      try {
+        const response = await axios.post('https://fascal.onrender.com/auth/signup', values, { withCredentials: true });
+        
+        if (response.data) {
+          localStorage.setItem('jwt', JSON.stringify(response.data));
+        }
+        console.log('User signed up successfully', response.data);
+        navigate("/")
+      } catch (error) {
+        console.log(error);
+      }
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    actions.resetForm();
+  };
+
   const {
     values,
     errors,
@@ -37,11 +45,11 @@ const Register = () => {
   } = useFormik({
     initialValues: {
       email: "",
-      age: "",
+      username: "",
       password: "",
       confirmPassword: "",
     },
-    validationSchema: basicSchema,
+    validationSchema: RegisterSchema,
     onSubmit,
   });
 
@@ -60,7 +68,7 @@ const Register = () => {
         className={errors.email && touched.email ? "input-error" : ""}
       />
       {errors.email && touched.email && <p className="error">{errors.email}</p>}
-      <label htmlFor="age">User Name</label>
+      <label htmlFor="username">User Name</label>
       <input
         id="username"
         type="text"
@@ -99,7 +107,7 @@ const Register = () => {
       {errors.confirmPassword && touched.confirmPassword && (
         <p className="error">{errors.confirmPassword}</p>
       )}
-      <button disabled={isSubmitting} type="submit">
+      <button className="booton" disabled={isSubmitting} type="submit">
         Submit
       </button>
     </form>
