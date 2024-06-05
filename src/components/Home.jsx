@@ -1,8 +1,17 @@
-import React from 'react'
+import {useEffect} from 'react'
 import Navbar from './Navbar'
-import { Outlet } from 'react-router-dom'
+import { Outlet,useNavigate } from 'react-router-dom'
 
 function Home() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    // Simulate authentication check (replace with your actual logic)
+    const storedToken = localStorage.getItem('jwt');
+    if (!storedToken) 
+      navigate("/auth")
+  }, []);
+
   return (
     <>
     <Navbar />
