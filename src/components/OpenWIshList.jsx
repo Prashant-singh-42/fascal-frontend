@@ -1,8 +1,9 @@
 import React from 'react'
+import BaseMovies from './BaseMovies'
 
 function OpenWIshList() {
   return (
-    <div>OpenWIshList</div>
+    <BaseMovies />
   )
 }
 

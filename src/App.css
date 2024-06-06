@@ -61,8 +61,84 @@
   margin-top: 1rem;
 } */
 
+.movie-card {
+  /* height: 300px !important; */
+  width: 200px !important;
+}
 
 .hide {
   opacity: 0;
+  visibility: hidden;
+}
+
+.search-main {
+  display: flex;
+  flex-direction: column;
+  width: 80% !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.sbar {
+  width: 80% !important;
+  margin: auto;
+}
+
+.wish-card {
+  width: 80%;
+  height: 60px;
+  margin: 10px !important;
+  padding: 20px !important;
+}
+
+.menus {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-evenly !important;
+  align-items: center !important;
+  width: 30%;
+}
+
+.card-bodyy{
+  height: 100%;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.wishlist-main {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.movies-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100%;
+}
+
+.movies-main {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 80vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.deleted {
   visibility: hidden;
 }
