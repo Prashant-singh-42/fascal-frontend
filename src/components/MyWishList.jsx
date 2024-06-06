@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import BaseWishList from './BaseWishList'
 import axios from 'axios'
 
-const userId = JSON.parse(localStorage.getItem("jwt")).user
+const userId = JSON.parse(localStorage.getItem("jwt"))
 const baseurl = "https://fascal.onrender.com/"
 // const baseurl = "http://localhost:3000/"
 
@@ -12,7 +12,7 @@ function MyWishList() {
   const [wishlists, setWishlists] = useState(null)
   const fetchWishlist = async () => {
     try{
-      const response = await axios.get(baseurl + `wishlist/userWishlists/${userId}`, { withCredentials: true })
+      const response = await axios.get(baseurl + `wishlist/userWishlists/${userId?.user}`, { withCredentials: true })
       if (response.data) {
         setWishlists(response.data)
       }

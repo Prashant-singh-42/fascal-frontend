@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
-const userId = JSON.parse(localStorage.getItem("jwt")).user
+const userId = JSON.parse(localStorage.getItem("jwt"))
 const baseurl = "https://fascal.onrender.com/"
 // const baseurl = "http://localhost:3000/"
 
@@ -14,7 +14,7 @@ function MovieCard({movie,mywishlist,wishlistid, setDeleted}) {
 
   const fetchWishlist = async () => {
     try{
-      const response = await axios.get(baseurl + `wishlist/userWishlists/${userId}`, { withCredentials: true })
+      const response = await axios.get(baseurl + `wishlist/userWishlists/${userId?.user}`, { withCredentials: true })
       if (response.data) {
         setOptionss(response.data)
       }
@@ -31,7 +31,7 @@ function MovieCard({movie,mywishlist,wishlistid, setDeleted}) {
 
   const handleSubmit = async () => {
     try{
-      const response =await axios.post(baseurl + "wishlist/wishlists",{title: make, userId}, { withCredentials: true })
+      const response =await axios.post(baseurl + "wishlist/wishlists",{title: make, userId:userId?.user}, { withCredentials: true })
       fetchWishlist()
       console.log(response)
     } catch (e) {

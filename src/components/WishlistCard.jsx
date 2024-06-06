@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState,useEffect } from "react";
 import axios from "axios";
 
-const userId = JSON.parse(localStorage.getItem("jwt")).user
+// const userId = JSON.parse(localStorage.getItem("jwt")).user
 const baseurl = "https://fascal.onrender.com/"
 // const baseurl = "http://localhost:3000/"
 
