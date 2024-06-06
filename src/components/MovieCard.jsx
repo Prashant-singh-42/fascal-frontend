@@ -1,16 +1,17 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
-const userId = JSON.parse(localStorage.getItem("jwt"))
+// const userId = JSON.parse(localStorage.getItem("jwt"))
 const baseurl = "https://fascal.onrender.com/"
 // const baseurl = "http://localhost:3000/"
 
 
 function MovieCard({movie,mywishlist,wishlistid, setDeleted}) {
-
   const [optionss, setOptionss] = useState([])
   const [make, setMake] = useState("")
   const [selected, setSelected] = useState(null)
+  const [userId, setUserId] = useState(null)
+
 
   const fetchWishlist = async () => {
     try{
@@ -27,6 +28,7 @@ function MovieCard({movie,mywishlist,wishlistid, setDeleted}) {
 
   useEffect(() => {
     fetchWishlist() 
+    setUserId(JSON.parse(localStorage.getItem("jwt")).user)
   },[])
 
   const handleSubmit = async () => {

@@ -10,6 +10,8 @@ const baseurl = "https://fascal.onrender.com/"
 
 function MyWishList() {
   const [wishlists, setWishlists] = useState(null)
+  const [userId, setUserId] = useState(null)
+  
   const fetchWishlist = async () => {
     try{
       const response = await axios.get(baseurl + `wishlist/userWishlists/${userId?.user}`, { withCredentials: true })
@@ -22,6 +24,7 @@ function MyWishList() {
   }
   useEffect(() => {
     fetchWishlist()
+    setUserId(JSON.parse(localStorage.getItem("jwt")).user)
   },[])
 
   
