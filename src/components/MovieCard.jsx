@@ -15,7 +15,7 @@ function MovieCard({movie,mywishlist,wishlistid, setDeleted}) {
 
   const fetchWishlist = async () => {
     try{
-      const response = await axios.get(baseurl + `wishlist/userWishlists/${userId?.user}`, { withCredentials: true })
+      const response = await axios.get(baseurl + `wishlist/userWishlists/${userId}`, { withCredentials: true })
       if (response.data) {
         setOptionss(response.data)
       }
@@ -27,13 +27,17 @@ function MovieCard({movie,mywishlist,wishlistid, setDeleted}) {
 
 
   useEffect(() => {
-    fetchWishlist() 
     setUserId(JSON.parse(localStorage.getItem("jwt")).user)
+    
   },[])
+
+  useEffect(()=>{
+    fetchWishlist()
+  },[userId])
 
   const handleSubmit = async () => {
     try{
-      const response =await axios.post(baseurl + "wishlist/wishlists",{title: make, userId:userId?.user}, { withCredentials: true })
+      const response =await axios.post(baseurl + "wishlist/wishlists",{title: make, userId}, { withCredentials: true })
       fetchWishlist()
       console.log(response)
     } catch (e) {
